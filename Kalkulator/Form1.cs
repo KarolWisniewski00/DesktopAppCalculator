@@ -110,29 +110,29 @@ namespace Kalkulator
                 if (textBox1.Text.Length > 0)
                 {
                     number2 = Convert.ToDouble(textBox1.Text);
-                label1.Text = String.Empty;
-                switch (sign)
-                {
-                    case "+":
-                        textBox1.Text = Convert.ToString(number1 + number2);
-                        break;
-                    case "-":
-                        textBox1.Text = Convert.ToString(number1 - number2);
-                        break;
-                    case "*":
-                        textBox1.Text = Convert.ToString(number1 * number2);
-                        break;
-                    case "/":
-                        if (number2 == 0)
-                        {
-                            MessageBox.Show("Cannot be devided by 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            textBox1.Text = Convert.ToString(number1 / number2);
-                        }
-                        break;
-                }
+                    label1.Text = String.Empty;
+                    switch (sign)
+                    {
+                        case "+":
+                            textBox1.Text = Convert.ToString(number1 + number2);
+                            break;
+                        case "-":
+                            textBox1.Text = Convert.ToString(number1 - number2);
+                            break;
+                        case "*":
+                            textBox1.Text = Convert.ToString(number1 * number2);
+                            break;
+                        case "/":
+                            if (number2 == 0)
+                            {
+                                MessageBox.Show("Cannot be devided by 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                textBox1.Text = Convert.ToString(number1 / number2);
+                            }
+                            break;
+                    }
                 sign = String.Empty;
                 firstNumber = true;
                 }
@@ -151,6 +151,10 @@ namespace Kalkulator
             {
                 if (textBox1.Text.Length > 0)
                 {
+                    if (textBox1.Text.EndsWith(","))
+                    {
+                        textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+                    }
                     number1 = Convert.ToDouble(textBox1.Text);
                     label1.Text = textBox1.Text += sign;
                     this.sign = sign;
